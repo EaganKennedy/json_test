@@ -1,40 +1,40 @@
-#include "json.hpp"
+#include "ivalue.hpp"
 
 namespace json {
 	IValue::~IValue() = default;
 
-	bool IValue::isNull(){
+	bool IValue::isNull() {
 		return false;
 	}
-	bool IValue::isBoolean(){
+	bool IValue::isBoolean() {
 		return false;
 	}
-	bool IValue::isNumber(){
+	bool IValue::isNumber() {
 		return false;
 	}
-	bool IValue::isString(){
+	bool IValue::isString() {
 		return false;
 	}
-	bool IValue::isArray(){
+	bool IValue::isArray() {
 		return false;
 	}
-	bool IValue::isObject(){
+	bool IValue::isObject() {
 		return false;
 	}
 
-	bool& IValue::getBool(){
+	bool& IValue::getBoolean() {
 		throw TypeError("This object is not a boolean");
 	}
-	double& IValue::getNumber(){
+	double& IValue::getNumber() {
 		throw TypeError("This object is not a number");
 	}
-	std::string IValue::getString(){
+	std::string IValue::getString() {
 		throw TypeError("This object is not a string");
 	}
-	ValueVector& IValue::getArray(){
+	ValueVector& IValue::getArray() {
 		throw TypeError("This object is not an array");
 	}
-	ValueMap& IValue::getObject(){
+	ValueMap& IValue::getObject() {
 		throw TypeError("This object is not an Object");
 	}
 }

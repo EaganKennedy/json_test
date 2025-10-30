@@ -1,5 +1,5 @@
 #pragma once
-#include "json.hpp"
+#include "ivalue.hpp"
 
 namespace json {
 	class null : public IValue {

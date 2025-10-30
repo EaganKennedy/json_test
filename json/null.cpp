@@ -1,4 +1,4 @@
-#include "json_null.hpp"
+#include "null.hpp"
 
 namespace json {
 	bool null::isNull() {
