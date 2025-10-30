@@ -5,6 +5,8 @@
 #include <map>
 #include <memory>
 
+#include "json_null.hpp"
+
 namespace json {
 	class IValue;
 	using Value = std::shared_ptr<IValue>;
