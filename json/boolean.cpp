@@ -1,8 +1,8 @@
 #include "boolean.hpp"
 
 namespace json {
-	Boolean::Boolean(bool input) {
-		data = input;
+	Boolean::Boolean(bool b) {
+		data = b;
 	}
 
 	void Boolean::print(std::ostream& out) {
@@ -20,7 +20,7 @@ namespace json {
 	}
 
 
-	Value toValue(bool input){
-		return std::make_shared<Boolean>(input);
+	Value toValue(bool b){
+		return std::make_shared<Boolean>(b);
 	}
 }

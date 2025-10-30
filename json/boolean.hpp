@@ -4,7 +4,7 @@
 namespace json {
 	class Boolean : public IValue {
 	public:
-		Boolean(bool input);
+		Boolean(bool b);
 
 		void print(std::ostream&) override;
 		Value clone() override;
