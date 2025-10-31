@@ -4,3 +4,4 @@
 #include "boolean.hpp"
 #include "number.hpp"
 #include "string.hpp"
+#include "array.hpp"

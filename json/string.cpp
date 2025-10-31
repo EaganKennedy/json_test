@@ -1,4 +1,5 @@
 #include "string.hpp"
+#include "iomanip"
 
 using std::string;
 
@@ -8,7 +9,7 @@ namespace json {
 	}
 
 	void String::print(std::ostream& out) const{
-		out << data;
+		out << std::quoted(data);
 	}
 	Value String::clone() const{
 		return toValue(data);

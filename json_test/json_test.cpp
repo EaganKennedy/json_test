@@ -1,11 +1,14 @@
 ﻿#include <string>
 #include <sstream>
+#include <iomanip>
+
 #include "gtest/gtest.h"
 #include "json.hpp"
 
 using namespace json;
 using std::string;
 using std::ostringstream;
+using std::quoted;
 
 TEST(Constructors, Null) {
 	ASSERT_NO_THROW(Value v = toValue());
@@ -149,15 +152,16 @@ TEST(Getters, String) {
 	Value v = toValue("but I'll see what I can do");
 
 	ostringstream sout;
+	string answer = "\"but I'll see what I can do\"";
 
 	v->print(sout);
-	ASSERT_EQ(sout.str(), "but I'll see what I can do");
+	ASSERT_EQ(sout.str(), answer);
 	sout.str("");
 
 	ASSERT_EQ("but I'll see what I can do", v->getString());
 
 	Value v2 = v->clone();
 	v2->print(sout);
-	ASSERT_EQ(sout.str(), "but I'll see what I can do");
+	ASSERT_EQ(sout.str(), answer);
 	sout.str("");
 }
