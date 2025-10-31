@@ -2,19 +2,19 @@
 
 namespace json {
 
-	void null::print(std::ostream& out) const {
+	void Null::print(std::ostream& out) const {
 		out << "null";
 	}
-	Value null::clone() const {
-		return Null;
+	Value Null::clone() const {
+		return null;
 	}
 
-	bool null::isNull() const {
+	bool Null::isNull() const {
 		return true;
 	}
 
-	std::shared_ptr<IValue> Null = std::make_shared<null>();
+	std::shared_ptr<IValue> null = std::make_shared<Null>();
 	Value toValue(){
-		return Null;
+		return null;
 	}
 }

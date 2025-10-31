@@ -38,3 +38,34 @@ TEST(Getters, Null) {
 	ASSERT_EQ(sout.str(), "null");
 	sout.str("");
 }
+
+TEST(TypeError, Boolean) {
+	ASSERT_NO_THROW(Value b = toValue(true));
+	Value b = toValue(true);
+
+	ASSERT_THROW(b->getArray(), TypeError);
+}
+TEST(Identifiers, Boolean) {
+	Value b = toValue(true);
+
+	ASSERT_FALSE(b->isNull());
+	ASSERT_TRUE(b->isBoolean());
+	ASSERT_FALSE(b->isNumber());
+	ASSERT_FALSE(b->isString());
+	ASSERT_FALSE(b->isArray());
+	ASSERT_FALSE(b->isObject());
+}
+TEST(Getters, Boolean) {
+	Value b = toValue(false);
+
+	ostringstream sout;
+
+	b->print(sout);
+	ASSERT_EQ(sout.str(), "false");
+	sout.str("");
+
+	Value b2 = b->clone();
+	b2->print(sout);
+	ASSERT_EQ(sout.str(), "false");
+	sout.str("");
+}

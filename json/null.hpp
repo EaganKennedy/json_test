@@ -2,9 +2,9 @@
 #include "ivalue.hpp"
 
 namespace json {
-	class null : public IValue {
+	class Null : public IValue {
 	public:
-		null() = default;
+		Null() = default;
 
 		void print(std::ostream& out) const override;
 		Value clone() const override;
@@ -13,5 +13,5 @@ namespace json {
 	};
 
 	Value toValue();
-	extern std::shared_ptr<IValue> Null;
+	extern std::shared_ptr<IValue> null;
 }

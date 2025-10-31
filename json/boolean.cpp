@@ -6,7 +6,7 @@ namespace json {
 	}
 
 	void Boolean::print(std::ostream& out)  const {
-		out << data;
+		out << std::boolalpha << data;
 	}
 	Value Boolean::clone()  const {
 		return toValue(data);
