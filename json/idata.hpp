@@ -6,23 +6,23 @@
 #include <memory>
 
 namespace json {
-	class IValue;
-	using Value = std::shared_ptr<IValue>;
-	using ValueVector = std::vector<Value>;
-	using ValueMap = std::map<std::string, Value>;
+	class IData;
+	using Data = std::shared_ptr<IData>;
+	using DataVector = std::vector<Data>;
+	using DataMap = std::map<std::string, Data>;
 
 	class TypeError : public std::exception {
 		using std::exception::exception;
 	};
 
-	class IValue {
+	class IData {
 	public:
-		IValue() = default;
+		IData() = default;
 
-		virtual ~IValue() = 0;
+		virtual ~IData() = 0;
 
 		virtual void print(std::ostream& out) const = 0;
-		virtual Value clone() const = 0;
+		virtual Data clone() const = 0;
 
 		virtual bool isNull() const;
 		virtual bool isBoolean() const;
@@ -34,7 +34,7 @@ namespace json {
 		virtual bool& getBoolean();
 		virtual double& getNumber();
 		virtual std::string& getString();
-		virtual ValueVector& getArray();
-		virtual ValueMap& getObject();
+		virtual DataVector& getArray();
+		virtual DataMap& getObject();
 	};
 }

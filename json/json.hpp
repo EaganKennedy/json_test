@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "ivalue.hpp"
+#include "idata.hpp"
 #include "null.hpp"
 #include "boolean.hpp"
 #include "number.hpp"

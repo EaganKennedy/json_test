@@ -5,7 +5,7 @@ namespace json {
 	void Null::print(std::ostream& out) const {
 		out << "null";
 	}
-	Value Null::clone() const {
+	Data Null::clone() const {
 		return null;
 	}
 
@@ -13,8 +13,8 @@ namespace json {
 		return true;
 	}
 
-	std::shared_ptr<IValue> null = std::make_shared<Null>();
-	Value toValue(){
+	std::shared_ptr<IData> null = std::make_shared<Null>();
+	Data toData(){
 		return null;
 	}
 }

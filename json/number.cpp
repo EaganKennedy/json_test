@@ -8,8 +8,8 @@ namespace json {
 	void Number::print(std::ostream& out)  const {
 		out << data;
 	}
-	Value Number::clone() const {
-		return toValue(data);
+	Data Number::clone() const {
+		return toData(data);
 	}
 
 	bool Number::isNumber() const {
@@ -19,10 +19,10 @@ namespace json {
 		return data;
 	}
 
-	Value toValue(int i) {
+	Data toData(int i) {
 		return std::make_shared<Number>(double(i));
 	}
-	Value toValue(double d) {
+	Data toData(double d) {
 		return std::make_shared<Number>(d);
 	}
 }

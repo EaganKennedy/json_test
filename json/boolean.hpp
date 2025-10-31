@@ -1,13 +1,13 @@
 #pragma once
-#include "ivalue.hpp"
+#include "iData.hpp"
 
 namespace json {
-	class Boolean : public IValue {
+	class Boolean : public IData {
 	public:
 		Boolean(bool b);
 
 		void print(std::ostream&) const override;
-		Value clone() const override;
+		Data clone() const override;
 
 		bool isBoolean() const override;
 		bool& getBoolean()override;
@@ -16,5 +16,5 @@ namespace json {
 		bool data;
 	};
 
-	Value toValue(bool input);
+	Data toData(bool input);
 }

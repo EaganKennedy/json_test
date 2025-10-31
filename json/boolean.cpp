@@ -8,8 +8,8 @@ namespace json {
 	void Boolean::print(std::ostream& out)  const {
 		out << std::boolalpha << data;
 	}
-	Value Boolean::clone()  const {
-		return toValue(data);
+	Data Boolean::clone()  const {
+		return toData(data);
 	}
 
 	bool Boolean::isBoolean()  const {
@@ -20,7 +20,7 @@ namespace json {
 	}
 
 
-	Value toValue(bool b){
+	Data toData(bool b){
 		return std::make_shared<Boolean>(b);
 	}
 }

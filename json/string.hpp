@@ -1,13 +1,13 @@
 #pragma once
-#include "ivalue.hpp"
+#include "iData.hpp"
 
 namespace json {
-	class String : public IValue {
+	class String : public IData {
 	public:
 		String(std::string s);
 
 		void print(std::ostream&) const override;
-		Value clone() const override;
+		Data clone() const override;
 
 		bool isString() const override;
 		std::string& getString()override;
@@ -15,6 +15,6 @@ namespace json {
 		std::string data;
 	};
 
-	Value toValue(std::string s);
-	Value toValue(const char* charptr);
+	Data toData(std::string s);
+	Data toData(const char* charptr);
 }

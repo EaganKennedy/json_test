@@ -1,13 +1,13 @@
 #pragma once
-#include "ivalue.hpp"
+#include "iData.hpp"
 
 namespace json {
-	class Number : public IValue {
+	class Number : public IData {
 	public:
 		Number(double d);
 
 		void print(std::ostream& out) const override;
-		Value clone() const override;
+		Data clone() const override;
 
 		bool isNumber() const override;
 		double& getNumber()override;
@@ -16,7 +16,7 @@ namespace json {
 		double data;
 	};
 
-	Value toValue(int i);
-	Value toValue(double d);
+	Data toData(int i);
+	Data toData(double d);
 
 }
