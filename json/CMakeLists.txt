@@ -1,9 +1,9 @@
 ﻿add_library(json STATIC  
 "json.hpp" 
 "idata.cpp" 
-"null.hpp""null.cpp" 
-"boolean.hpp" "boolean.cpp"
-"number.hpp" "number.cpp" 
-"string.hpp" "string.cpp" 
-"array.hpp" "array.cpp")
+"null.cpp" 
+"boolean.cpp"
+"number.cpp" 
+"string.cpp" 
+"array.cpp")
 target_include_directories(json PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
