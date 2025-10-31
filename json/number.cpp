@@ -22,7 +22,6 @@ namespace json {
 	Value toValue(int i) {
 		return std::make_shared<Number>(double(i));
 	}
-
 	Value toValue(double d) {
 		return std::make_shared<Number>(d);
 	}
