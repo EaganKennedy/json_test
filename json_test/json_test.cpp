@@ -46,26 +46,62 @@ TEST(TypeError, Boolean) {
 	ASSERT_THROW(b->getArray(), TypeError);
 }
 TEST(Identifiers, Boolean) {
-	Value b = toValue(true);
+	Value v = toValue(true);
 
-	ASSERT_FALSE(b->isNull());
-	ASSERT_TRUE(b->isBoolean());
-	ASSERT_FALSE(b->isNumber());
-	ASSERT_FALSE(b->isString());
-	ASSERT_FALSE(b->isArray());
-	ASSERT_FALSE(b->isObject());
+	ASSERT_FALSE(v->isNull());
+	ASSERT_TRUE(v->isBoolean());
+	ASSERT_FALSE(v->isNumber());
+	ASSERT_FALSE(v->isString());
+	ASSERT_FALSE(v->isArray());
+	ASSERT_FALSE(v->isObject());
 }
 TEST(Getters, Boolean) {
-	Value b = toValue(false);
+	Value v = toValue(false);
 
 	ostringstream sout;
 
-	b->print(sout);
+	v->print(sout);
 	ASSERT_EQ(sout.str(), "false");
 	sout.str("");
 
-	Value b2 = b->clone();
-	b2->print(sout);
+	ASSERT_EQ(false, v->getBoolean());
+
+	Value v2 = v->clone();
+	v2->print(sout);
 	ASSERT_EQ(sout.str(), "false");
+	sout.str("");
+}
+
+TEST(TypeError, Number) {
+	ASSERT_NO_THROW(Value n = toValue(5));
+
+	Value n = toValue(5);
+
+	ASSERT_THROW(n->getObject(), TypeError);
+}
+TEST(Identifiers, Number) {
+	Value v = toValue(2000);
+
+	ASSERT_FALSE(v->isNull());
+	ASSERT_FALSE(v->isBoolean());
+	ASSERT_TRUE(v->isNumber());
+	ASSERT_FALSE(v->isString());
+	ASSERT_FALSE(v->isArray());
+	ASSERT_FALSE(v->isObject());
+}
+TEST(Getters, Number) {
+	Value v = toValue(3.14);
+
+	ostringstream sout;
+
+	v->print(sout);
+	ASSERT_EQ(sout.str(), "3.14");
+	sout.str("");
+
+	ASSERT_EQ(3.14, v->getNumber());
+
+	Value v2 = v->clone();
+	v2->print(sout);
+	ASSERT_EQ(sout.str(), "3.14");
 	sout.str("");
 }
