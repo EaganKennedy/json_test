@@ -6,11 +6,11 @@ namespace json {
 	public:
 		Number(double d);
 
-		void print(std::ostream& out) override;
-		Value clone() override;
+		void print(std::ostream& out) const override;
+		Value clone() const override;
 
-		bool isNumber() override;
-		double& getNumber() override;
+		bool isNumber() const override;
+		double& getNumber()override;
 
 	protected:
 		double data;

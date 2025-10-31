@@ -5,17 +5,17 @@ namespace json {
 		data = b;
 	}
 
-	void Boolean::print(std::ostream& out) {
+	void Boolean::print(std::ostream& out)  const {
 		out << data;
 	}
-	Value Boolean::clone() {
+	Value Boolean::clone()  const {
 		return toValue(data);
 	}
 
-	bool Boolean::isBoolean() {
+	bool Boolean::isBoolean()  const {
 		return data;
 	}
-	bool& Boolean::getBoolean() {
+	bool& Boolean::getBoolean(){
 		return data;
 	}
 

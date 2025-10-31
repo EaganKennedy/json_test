@@ -3,22 +3,22 @@
 namespace json {
 	IValue::~IValue() = default;
 
-	bool IValue::isNull() {
+	bool IValue::isNull() const{
 		return false;
 	}
-	bool IValue::isBoolean() {
+	bool IValue::isBoolean() const {
 		return false;
 	}
-	bool IValue::isNumber() {
+	bool IValue::isNumber() const {
 		return false;
 	}
-	bool IValue::isString() {
+	bool IValue::isString() const {
 		return false;
 	}
-	bool IValue::isArray() {
+	bool IValue::isArray() const {
 		return false;
 	}
-	bool IValue::isObject() {
+	bool IValue::isObject() const {
 		return false;
 	}
 
@@ -28,7 +28,7 @@ namespace json {
 	double& IValue::getNumber() {
 		throw TypeError("This object is not a number");
 	}
-	std::string IValue::getString() {
+	std::string& IValue::getString() {
 		throw TypeError("This object is not a string");
 	}
 	ValueVector& IValue::getArray() {

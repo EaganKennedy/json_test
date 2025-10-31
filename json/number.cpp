@@ -5,17 +5,17 @@ namespace json {
 		data = d;
 	}
 
-	void Number::print(std::ostream& out) {
+	void Number::print(std::ostream& out)  const {
 		out << data;
 	}
-	Value Number::clone() {
+	Value Number::clone() const {
 		return toValue(data);
 	}
 
-	bool Number::isNumber() {
+	bool Number::isNumber() const {
 		return true;
 	}
-	double& Number::getNumber() {
+	double& Number::getNumber(){
 		return data;
 	}
 

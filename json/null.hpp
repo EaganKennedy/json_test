@@ -6,9 +6,10 @@ namespace json {
 	public:
 		null() = default;
 
-		bool isNull() override;
-		void print(std::ostream& out) override;
-		Value clone() override;
+		void print(std::ostream& out) const override;
+		Value clone() const override;
+
+		bool isNull() const override;
 	};
 
 	Value toValue();

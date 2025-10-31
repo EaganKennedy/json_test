@@ -1,14 +1,16 @@
 #include "null.hpp"
 
 namespace json {
-	bool null::isNull() {
-		return true;
-	}
-	void null::print(std::ostream& out) {
+
+	void null::print(std::ostream& out) const {
 		out << "null";
 	}
-	Value null::clone() {
+	Value null::clone() const {
 		return Null;
+	}
+
+	bool null::isNull() const {
+		return true;
 	}
 
 	std::shared_ptr<IValue> Null = std::make_shared<null>();

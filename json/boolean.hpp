@@ -6,11 +6,11 @@ namespace json {
 	public:
 		Boolean(bool b);
 
-		void print(std::ostream&) override;
-		Value clone() override;
+		void print(std::ostream&) const override;
+		Value clone() const override;
 
-		bool isBoolean() override;
-		bool& getBoolean() override;
+		bool isBoolean() const override;
+		bool& getBoolean()override;
 
 	protected:
 		bool data;
