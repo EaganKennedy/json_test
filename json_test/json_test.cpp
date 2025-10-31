@@ -105,3 +105,37 @@ TEST(Getters, Number) {
 	ASSERT_EQ(sout.str(), "3.14");
 	sout.str("");
 }
+
+TEST(TypeError, String) {
+	ASSERT_NO_THROW(Value s = toValue("Life before death"));
+
+	Value s = toValue("Strength before weakness");
+
+	ASSERT_THROW(s->getBoolean(), TypeError);
+}
+TEST(Identifiers, String) {
+	Value v = toValue("Journey before destination");
+
+	ASSERT_FALSE(v->isNull());
+	ASSERT_FALSE(v->isBoolean());
+	ASSERT_FALSE(v->isNumber());
+	ASSERT_TRUE(v->isString());
+	ASSERT_FALSE(v->isArray());
+	ASSERT_FALSE(v->isObject());
+}
+TEST(Getters, String) {
+	Value v = toValue("These words are accepted");
+
+	ostringstream sout;
+
+	v->print(sout);
+	ASSERT_EQ(sout.str(), "These words are accepted");
+	sout.str("");
+
+	ASSERT_EQ("These words are accepted", v->getString());
+
+	Value v2 = v->clone();
+	v2->print(sout);
+	ASSERT_EQ(sout.str(), "These words are accepted");
+	sout.str("");
+}
