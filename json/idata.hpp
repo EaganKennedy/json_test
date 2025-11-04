@@ -40,8 +40,7 @@ namespace json {
 
 
 	template<typename T>
-	vector<T> fromJson(Data d, T t) {
-		vector<T> temp;
+	void fromJson(Data d, T t) {
 
 	}
 }
