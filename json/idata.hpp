@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <type_traits>
 
 namespace json {
 	class IData;
@@ -40,7 +41,14 @@ namespace json {
 
 
 	template<typename T>
-	void fromJson(Data d, T t) {
-
+	void fromJson(Data d, T& t) {
+		if (std::is_same_v <T, int> || std::is_same_v <T, double>) {
+			t = d->getNumber();
+		}
+		else if (std::is_same_v<T, bool>) {
+			t = d->getBoolean();
+		}
+		else if (std::is_same_v<T, std::string>) {
+			t = d->getString();
+		}
 	}
-}

@@ -1,6 +1,5 @@
 #include "idata.hpp"
 #include <vector>
-#include <type_traits>
 
 using std::vector;
 
