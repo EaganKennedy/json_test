@@ -1,5 +1,8 @@
-#include "iData.hpp"
+#include "idata.hpp"
 #include <vector>
+#include <type_traits>
+
+using std::vector;
 
 namespace json {
 	class Array : public IData {
@@ -20,15 +23,11 @@ namespace json {
 	Data toData(DataVector dv);
 
 	template<typename T>
-	Data toData(const std::vector<T>& v) {
+	Data toData(const vector<T>& v) {
 		DataVector temp;
 		for (const T& item : v) {
 			temp.push_back(toData(item));
 		}
 		return std::make_shared<Array>(temp);
-	}
-	template<typename T>
-	std::vector<T> fromJson(DataVector dv, T t) {
-
 	}
 }

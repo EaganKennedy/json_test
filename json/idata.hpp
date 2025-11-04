@@ -37,4 +37,11 @@ namespace json {
 		virtual DataVector& getArray();
 		virtual DataMap& getObject();
 	};
+
+
+	template<typename T>
+	vector<T> fromJson(Data d, T t) {
+		vector<T> temp;
+
+	}
 }
