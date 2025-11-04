@@ -25,12 +25,13 @@ namespace json {
 		return data;
 	}
 
-	DataVector toData(DataVector dv) {
+	Data toData(DataVector dv) {
 		DataVector newDV;
 
 		for (const auto& item : dv) {
 			newDV.push_back(item->clone());
 		}
-		return newDV;
+
+		return std::make_shared<Array>(newDV);
 	}
 }

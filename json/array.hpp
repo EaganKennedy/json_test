@@ -17,14 +17,16 @@ namespace json {
 
 	};
 
-	DataVector toData(DataVector dv);
+	Data toData(DataVector dv);
 
 	template<typename T>
-	DataVector toData(std::vector<T> v) {
+	DataVector toData(const std::vector<T>& v) {
 		DataVector temp;
-		for (const auto& item : v) {
-			
+		for (const T& item : v) {
+			temp.push_back(toData(item));
 		}
+
+		return temp;
 	}
 	template<typename T>
 	std::vector<T> fromJson(DataVector dv, T t) {
