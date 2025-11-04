@@ -4,7 +4,7 @@
 namespace json {
 	class Array : public IData {
 	public:
-		Array(DataVector dv);
+		Array(DataVector dv = {});
 
 		void print(std::ostream& out) const override;
 		Data clone() const override;
@@ -17,10 +17,14 @@ namespace json {
 
 	};
 
-	Data toData(DataVector dv);
+	DataVector toData(DataVector dv);
+
 	template<typename T>
-	Data toData(std::vector<T> v) {
-		
+	DataVector toData(std::vector<T> v) {
+		DataVector temp;
+		for (const auto& item : v) {
+			
+		}
 	}
 	template<typename T>
 	std::vector<T> fromJson(DataVector dv, T t) {
