@@ -4,7 +4,7 @@
 namespace json {
 	class Number : public IData {
 	public:
-		Number(double d);
+		Number(double d = 0);
 
 		void print(std::ostream& out) const override;
 		Data clone() const override;

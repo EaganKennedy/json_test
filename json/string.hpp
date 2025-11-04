@@ -4,7 +4,7 @@
 namespace json {
 	class String : public IData {
 	public:
-		String(std::string s);
+		String(std::string s = "");
 
 		void print(std::ostream&) const override;
 		Data clone() const override;
