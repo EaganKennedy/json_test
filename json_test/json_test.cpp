@@ -11,6 +11,8 @@ using std::ostringstream;
 using std::quoted;
 using std::vector;
 
+vector<int> testV{ 1,2,3 };
+
 TEST(Constructors, Null) {
 	ASSERT_NO_THROW(Null v);
 }
@@ -171,4 +173,26 @@ TEST(Getters, String) {
 TEST(Constructors, Array) {
 	ASSERT_NO_THROW(Array a(DataVector{toData(1),toData(2) ,toData(3) }));
 	ASSERT_NO_THROW(Array a());
+}
+TEST(toData, Array) {
+	ASSERT_NO_THROW(testV);
+}
+TEST(TypeError, Array) {
+	Data a = toData(testV);
+
+	ASSERT_THROW(a->getString(), TypeError);
+}
+TEST(Identifiers, Array) {
+	Data v = toData(testV);
+
+	ASSERT_FALSE(v->isNull());
+	ASSERT_FALSE(v->isBoolean());
+	ASSERT_FALSE(v->isNumber());
+	ASSERT_FALSE(v->isString());
+	ASSERT_TRUE(v->isArray());
+	ASSERT_FALSE(v->isObject());
+}
+TEST(Getters, Array) {
+	Data a = toData(testV);
+	ASSERT_NO_THROW(DataVector dv = a->getArray());
 }

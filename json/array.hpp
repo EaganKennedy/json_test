@@ -16,7 +16,6 @@ namespace json {
 
 	protected:
 		DataVector data;
-
 	};
 
 	Data toData(DataVector dv);
