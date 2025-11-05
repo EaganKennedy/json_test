@@ -11,8 +11,7 @@ using std::ostringstream;
 using std::quoted;
 
 TEST(Constructors, Null) {
-	ASSERT_NO_THROW(Data v = toData());
-	Data v = toData();
+	ASSERT_NO_THROW(Null v);
 }
 TEST(toData, Null) {
 	ASSERT_NO_THROW(Data v = toData());
@@ -46,12 +45,13 @@ TEST(Getters, Null) {
 	sout.str("");
 }
 
+
+TEST(Constructors, Boolean) {
+	ASSERT_NO_THROW(Boolean b(true));
+	ASSERT_NO_THROW(Boolean b);
+}
 TEST(toData, Boolean) {
 	ASSERT_NO_THROW(Data b = toData(true));
-}
-TEST(Constructors, Boolean) {
-	ASSERT_NO_THROW(Data b = toData(true));
-	Data b = toData(true);
 }
 TEST(TypeError, Boolean) {
 	Data b = toData(true);
@@ -85,13 +85,12 @@ TEST(Getters, Boolean) {
 	sout.str("");
 }
 
+TEST(Constructors, Number) {
+	ASSERT_NO_THROW(Number n(5));
+	ASSERT_NO_THROW(Number n);
+}
 TEST(toData, Number) {
 	ASSERT_NO_THROW(Data n = toData(5));
-}
-TEST(Constructors, Number) {
-	ASSERT_NO_THROW(Data n = toData(5));
-
-	Data n = toData(5);
 }
 TEST(TypeError, Number) {
 	Data n = toData(5);
@@ -126,7 +125,8 @@ TEST(Getters, Number) {
 }
 
 TEST(toData, String) {
-	ASSERT_NO_THROW(Data s = toData("Life before death"));
+	ASSERT_NO_THROW(String s("Life before death"));
+	ASSERT_NO_THROW(String s);
 }
 TEST(Constructors, String) {
 	ASSERT_NO_THROW(Data s = toData("Strength before weakness"));
