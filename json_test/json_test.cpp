@@ -159,8 +159,6 @@ TEST(Constructors, String) {
 }
 TEST(toData, String) {
 	ASSERT_NO_THROW(Data s = toData("Strength before weakness"));
-
-	Data s = toData();
 }
 TEST(TypeError, String) {
 	Data s = toData("Journey before destination");
@@ -210,7 +208,7 @@ TEST(Constructors, Array) {
 	ASSERT_NO_THROW(Array a());
 }
 TEST(toData, Array) {
-	ASSERT_NO_THROW(testV);
+	ASSERT_NO_THROW(Data a = toData(testV));
 }
 TEST(TypeError, Array) {
 	Data a = toData(testV);
@@ -256,4 +254,15 @@ TEST(Clone, Array) {
 	Data a2 = a->clone();
 	a2->print(sout);
 	ASSERT_EQ(sout.str(), answer);
+}
+
+TEST(Constructors, Object) {
+	DataMap dmT;
+	dmT["ein"] = toData(1);
+
+	ASSERT_NO_THROW(Object o(dmT));
+	ASSERT_NO_THROW(Object o());
+}
+TEST(toData, Object) {
+	
 }

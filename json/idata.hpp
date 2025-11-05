@@ -39,7 +39,6 @@ namespace json {
 		virtual DataMap& getObject();
 	};
 
-
 	template<typename T>
 	void fromJson(Data d, T& t) {
 		if (std::is_same_v <T, int> || std::is_same_v <T, double>) {
@@ -54,22 +53,24 @@ namespace json {
 	}
 
 	template<typename T>
-	void fromJson(Data d, std::vector<T> t) {
+	void fromJson(const Data& d, std::vector<T>& t) {
+		DataVector& dv = d->getArray();
 		t.clear();
 
-		for (const auto& item : d) {
-			T temp;
+		for (const auto& item : dv) {
+			T temp{};
 			fromJson(item, temp);
 
-			d.push_back(std::move(temp));
+			dv.push_back(std::move(temp));
 		}
 	}
 	template<typename T>
-	void fromJson(Data d, std::map<std::string, T> t) {
+	void fromJson(Data d, std::map<std::string, T>& t) {
+		DataMap& dm = d->getObject();
 		t.clear();
 
-		for (const auto& [key, value] t) {
-			T temp;
+		for (const auto& [key, value] : dm) {
+			T temp{};
 			fromJson(value, temp);
 
 			t[key] = std::move(temp);
