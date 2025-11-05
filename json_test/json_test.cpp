@@ -302,3 +302,20 @@ TEST(Print, Object) {
 	o->print(sout);
 	ASSERT_EQ(sout.str(), answer);
 }
+
+TEST(fromJson, vector) {
+	vector<int> copy = testV;
+
+	Data d = toData(testV);
+	fromJson(d, copy);
+
+	ASSERT_EQ(testV, copy);
+}
+TEST(fromJson, map) {
+	map<string, int> copy = testM;
+
+	Data d = toData(testM);
+	fromJson(d, copy);
+
+	ASSERT_EQ(testM, copy);
+}

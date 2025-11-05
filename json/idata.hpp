@@ -41,13 +41,13 @@ namespace json {
 
 	template<typename T>
 	void fromJson(Data d, T& t) {
-		if (std::is_same_v <T, int> || std::is_same_v <T, double>) {
+		if constexpr(std::is_same_v <T, int> || std::is_same_v <T, double>) {
 			t = d->getNumber();
 		}
-		else if (std::is_same_v<T, bool>) {
+		else if constexpr(std::is_same_v<T, bool>) {
 			t = d->getBoolean();
 		}
-		else if (std::is_same_v<T, std::string>) {
+		else if constexpr(std::is_same_v<T, std::string>) {
 			t = d->getString();
 		}
 	}
@@ -61,7 +61,7 @@ namespace json {
 			T temp{};
 			fromJson(item, temp);
 
-			dv.push_back(std::move(temp));
+			t.push_back(std::move(temp));
 		}
 	}
 	template<typename T>
