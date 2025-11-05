@@ -9,6 +9,7 @@ using namespace json;
 using std::string;
 using std::ostringstream;
 using std::quoted;
+using std::vector;
 
 TEST(Constructors, Null) {
 	ASSERT_NO_THROW(Null v);
@@ -124,11 +125,12 @@ TEST(Getters, Number) {
 	sout.str("");
 }
 
-TEST(toData, String) {
+TEST(Constructors, String) {
 	ASSERT_NO_THROW(String s("Life before death"));
 	ASSERT_NO_THROW(String s);
+	
 }
-TEST(Constructors, String) {
+TEST(toData, String) {
 	ASSERT_NO_THROW(Data s = toData("Strength before weakness"));
 
 	Data s = toData("Journey before destination");
@@ -164,4 +166,9 @@ TEST(Getters, String) {
 	v2->print(sout);
 	ASSERT_EQ(sout.str(), answer);
 	sout.str("");
+}
+
+TEST(Constructors, Array) {
+	ASSERT_NO_THROW(Array a(DataVector{toData(1),toData(2) ,toData(3) }));
+	ASSERT_NO_THROW(Array a());
 }
