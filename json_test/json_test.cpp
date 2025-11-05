@@ -291,14 +291,14 @@ TEST(Print, Object) {
 	Data o = toData(testM);
 
 	ostringstream sout;
-	string answer = "{\"ein\":1,\"zwei\":2,\"drei\":3}";
+	string answer = "{\"drei\":3,\"ein\":1,\"zwei\":2}";
 
 	o->print(sout);
 	ASSERT_EQ(sout.str(), answer);
 	sout.str("");
 
 	o = toData(testMV);
-	answer = "{\"first\":[\"ein\",\"zwei\",\"drei\"],\"second\":[\"ein\",\"zwei\",\"drei\"],\"third\":[\"ein\",\"zwei\",\"drei\"]}";
+	answer = "{\"first\":[1,2,3],\"second\":[1,2,3],\"third\":[1,2,3]}";
 	o->print(sout);
 	ASSERT_EQ(sout.str(), answer);
 }
