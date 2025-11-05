@@ -37,4 +37,9 @@ namespace json {
 	DataMap& IData::getObject() {
 		throw TypeError("This object is not an Object");
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Data& rhs) {
+		rhs->print(out);
+		return out;
+	}
 }

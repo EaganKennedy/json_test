@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 #include <type_traits>
+#include <ostream>
 
 namespace json {
 	class IData;
@@ -76,4 +77,6 @@ namespace json {
 			t[key] = std::move(temp);
 		}
 	}
+
+	std::ostream& operator<<(std::ostream& out, Data const& rhs);
 }

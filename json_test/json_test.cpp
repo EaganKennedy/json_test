@@ -319,3 +319,12 @@ TEST(fromJson, map) {
 
 	ASSERT_EQ(testM, copy);
 }
+TEST(Print, ostream) {
+	Data o = toData(testM);
+
+	ostringstream sout;
+	string answer = "{\"drei\":3,\"ein\":1,\"zwei\":2}";
+
+	sout << o;
+	ASSERT_EQ(sout.str(), answer);
+}
