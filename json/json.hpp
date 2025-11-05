@@ -5,3 +5,4 @@
 #include "number.hpp"
 #include "string.hpp"
 #include "array.hpp"
+#include "object.hpp"

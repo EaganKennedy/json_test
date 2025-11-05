@@ -66,6 +66,13 @@ namespace json {
 	}
 	template<typename T>
 	void fromJson(Data d, std::map<std::string, T> t) {
-		
+		t.clear();
+
+		for (const auto& [key, value] t) {
+			T temp;
+			fromJson(value, temp);
+
+			t[key] = std::move(temp);
+		}
 	}
 }
