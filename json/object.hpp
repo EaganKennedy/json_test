@@ -18,7 +18,12 @@ namespace json{
 	Data toData(DataMap dm);
 
 	template<typename T>
-	Data toData(std::map<std::string, T>) {
+	Data toData(std::map<std::string, T> m) {
+		DataMap temp;
+		for (const auto& [key, value] : m) {
+			temp[key] = toData(value);
+		}
 
+		return std::make_shared<Object>(temp);
 	}
 }
