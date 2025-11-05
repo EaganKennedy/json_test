@@ -12,6 +12,7 @@ using std::quoted;
 using std::vector;
 
 vector<int> testV{ 1,2,3 };
+vector<string> testVS{ "ein","zwei","drei" };
 
 TEST(Constructors, Null) {
 	ASSERT_NO_THROW(Null v);
@@ -36,18 +37,26 @@ TEST(Identifiers, Null) {
 }
 TEST(Getters, Null) {
 	Data v = toData();
+	std::shared_ptr temp = null;
+}
+TEST(Print, Null) {
+	Data v = toData();
 
 	ostringstream sout;
 	v->print(sout);
 	ASSERT_EQ(sout.str(), "null");
 	sout.str("");
+}
+TEST(Clone, Null) {
+	Data v = toData();
+
+	ostringstream sout;
 
 	Data v2 = v->clone();
 	v2->print(sout);
 	ASSERT_EQ(sout.str(), "null");
 	sout.str("");
 }
-
 
 TEST(Constructors, Boolean) {
 	ASSERT_NO_THROW(Boolean b(true));
@@ -73,14 +82,21 @@ TEST(Identifiers, Boolean) {
 }
 TEST(Getters, Boolean) {
 	Data v = toData(false);
+	ASSERT_NO_THROW(bool b = v->getBoolean());
+}
+TEST(Print, Boolean) {
+	Data v = toData(false);
 
 	ostringstream sout;
 
 	v->print(sout);
 	ASSERT_EQ(sout.str(), "false");
 	sout.str("");
+}
+TEST(Clone, Boolean) {
+	Data v = toData(false);
 
-	ASSERT_EQ(false, v->getBoolean());
+	ostringstream sout;
 
 	Data v2 = v->clone();
 	v2->print(sout);
@@ -113,13 +129,23 @@ TEST(Identifiers, Number) {
 TEST(Getters, Number) {
 	Data v = toData(3.14);
 
+	ASSERT_NO_THROW(int i = v->getNumber());
+}
+TEST(Print, Number) {
+	Data v = toData(3.14);
+
 	ostringstream sout;
 
 	v->print(sout);
 	ASSERT_EQ(sout.str(), "3.14");
 	sout.str("");
 
-	ASSERT_EQ(3.14, v->getNumber());
+	
+}
+TEST(Clone, Number) {
+	Data v = toData(3.14);
+
+	ostringstream sout;
 
 	Data v2 = v->clone();
 	v2->print(sout);
@@ -130,20 +156,19 @@ TEST(Getters, Number) {
 TEST(Constructors, String) {
 	ASSERT_NO_THROW(String s("Life before death"));
 	ASSERT_NO_THROW(String s);
-	
 }
 TEST(toData, String) {
 	ASSERT_NO_THROW(Data s = toData("Strength before weakness"));
 
-	Data s = toData("Journey before destination");
+	Data s = toData();
 }
 TEST(TypeError, String) {
-	Data s = toData("These words are accepted");
+	Data s = toData("Journey before destination");
 
 	ASSERT_THROW(s->getBoolean(), TypeError);
 }
 TEST(Identifiers, String) {
-	Data v = toData("Honor is dead,");
+	Data v = toData("These words are accepted");
 
 	ASSERT_FALSE(v->isNull());
 	ASSERT_FALSE(v->isBoolean());
@@ -153,6 +178,10 @@ TEST(Identifiers, String) {
 	ASSERT_FALSE(v->isObject());
 }
 TEST(Getters, String) {
+	Data v = toData("Honor is dead,");
+	ASSERT_NO_THROW(string s = v->getString());
+}
+TEST(Print, String) {
 	Data v = toData("but I'll see what I can do");
 
 	ostringstream sout;
@@ -162,7 +191,13 @@ TEST(Getters, String) {
 	ASSERT_EQ(sout.str(), answer);
 	sout.str("");
 
-	ASSERT_EQ("but I'll see what I can do", v->getString());
+	
+}
+TEST(Clone, String) {
+	Data v = toData("but I'll see what I can do");
+
+	ostringstream sout;
+	string answer = "\"but I'll see what I can do\"";
 
 	Data v2 = v->clone();
 	v2->print(sout);
@@ -195,4 +230,30 @@ TEST(Identifiers, Array) {
 TEST(Getters, Array) {
 	Data a = toData(testV);
 	ASSERT_NO_THROW(DataVector dv = a->getArray());
+}
+TEST(Print, Array) {
+	Data a = toData(testV);
+	
+	ostringstream sout;
+	string answer = "[1,2,3]";
+	
+	a->print(sout);
+	ASSERT_EQ(sout.str(), answer);
+	sout.str("");
+
+	a = toData(testVS);
+	answer = R"([ein,zwei,drei])";
+	answer = "[\"ein\",\"zwei\",\"drei\"]";
+	a->print(sout);
+	ASSERT_EQ(sout.str(), answer);
+}
+TEST(Clone, Array) {
+	Data a = toData(testV);
+
+	ostringstream sout;
+	string answer = "[1,2,3]";
+
+	Data a2 = a->clone();
+	a2->print(sout);
+	ASSERT_EQ(sout.str(), answer);
 }
