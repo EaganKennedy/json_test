@@ -10,9 +10,13 @@ using std::string;
 using std::ostringstream;
 using std::quoted;
 using std::vector;
+using std::map;
 
 vector<int> testV{ 1,2,3 };
 vector<string> testVS{ "ein","zwei","drei" };
+
+map<string, int> testM = { {"ein" , 1}, {"zwei" , 2}, {"drei", 3}};
+map<string, vector<int>> testMV = { {"first", testV}, {"second", testV}, {"third", testV} };
 
 TEST(Constructors, Null) {
 	ASSERT_NO_THROW(Null v);
@@ -240,7 +244,6 @@ TEST(Print, Array) {
 	sout.str("");
 
 	a = toData(testVS);
-	answer = R"([ein,zwei,drei])";
 	answer = "[\"ein\",\"zwei\",\"drei\"]";
 	a->print(sout);
 	ASSERT_EQ(sout.str(), answer);
@@ -257,12 +260,45 @@ TEST(Clone, Array) {
 }
 
 TEST(Constructors, Object) {
-	DataMap dmT;
-	dmT["ein"] = toData(1);
+	DataMap dmT{ {"ein", toData(1)}};
 
 	ASSERT_NO_THROW(Object o(dmT));
 	ASSERT_NO_THROW(Object o());
 }
 TEST(toData, Object) {
-	
+	ASSERT_NO_THROW(Data o = toData(testM));
+}
+TEST(TypeError, Object) {
+	Data o = toData(testM);
+
+	ASSERT_THROW(o->getBoolean(), TypeError);
+}
+TEST(Identifiers, Object) {
+	Data v = toData(testM);
+
+	ASSERT_FALSE(v->isNull());
+	ASSERT_FALSE(v->isBoolean());
+	ASSERT_FALSE(v->isNumber());
+	ASSERT_FALSE(v->isString());
+	ASSERT_FALSE(v->isArray());
+	ASSERT_TRUE(v->isObject());
+}
+TEST(Getters, Object) {
+	Data o = toData(testM);
+	ASSERT_NO_THROW(DataMap dm = o->getObject());
+}
+TEST(Print, Object) {
+	Data o = toData(testM);
+
+	ostringstream sout;
+	string answer = "{\"ein\":1,\"zwei\":2,\"drei\":3}";
+
+	o->print(sout);
+	ASSERT_EQ(sout.str(), answer);
+	sout.str("");
+
+	o = toData(testMV);
+	answer = "{\"first\":[\"ein\",\"zwei\",\"drei\"],\"second\":[\"ein\",\"zwei\",\"drei\"],\"third\":[\"ein\",\"zwei\",\"drei\"]}";
+	o->print(sout);
+	ASSERT_EQ(sout.str(), answer);
 }
