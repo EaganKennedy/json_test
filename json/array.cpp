@@ -6,7 +6,14 @@ namespace json {
 	}
 
 	void Array::print(std::ostream& out) const{
-
+		out << "[";
+		for (size_t i = 0; i < data.size(); ++i) {
+			data[i]->print(out);
+			if (i < data.size() - 1) {
+				out << ",";
+			}
+		}
+		out << "]";
 	}
 	Data Array::clone() const {
 		std::shared_ptr clone = std::make_shared<Array>();
