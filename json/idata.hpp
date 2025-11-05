@@ -52,3 +52,17 @@ namespace json {
 			t = d->getString();
 		}
 	}
+
+	template<typename T>
+	void fromJson(const Data& d, std::vector<T> t) {
+		DataVector dv = d->getArray();
+		t.clear();
+
+		for (const auto& item : dv) {
+			T temp;
+			fromJson(item, temp);
+
+			dv.push_back(std::move(temp));
+		}
+	}
+}
