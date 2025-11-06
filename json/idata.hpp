@@ -66,7 +66,7 @@ namespace json {
 		}
 	}
 	template<typename T>
-	void fromJson(Data d, std::map<std::string, T>& t) {
+	void fromJson(const Data& d, std::map<std::string, T>& t) {
 		DataMap& dm = d->getObject();
 		t.clear();
 
