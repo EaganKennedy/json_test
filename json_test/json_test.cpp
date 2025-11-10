@@ -209,7 +209,7 @@ TEST(Clone, String) {
 
 TEST(Constructors, Array) {
 	ASSERT_NO_THROW(Array a(DataVector{toData(1),toData(2) ,toData(3) }));
-	ASSERT_NO_THROW(Array a());
+	ASSERT_NO_THROW(Array a);
 }
 TEST(toData, Array) {
 	ASSERT_NO_THROW(Data a = toData(testV));
@@ -263,7 +263,7 @@ TEST(Constructors, Object) {
 	DataMap dmT{ {"ein", toData(1)}};
 
 	ASSERT_NO_THROW(Object o(dmT));
-	ASSERT_NO_THROW(Object o());
+	ASSERT_NO_THROW(Object o);
 }
 TEST(toData, Object) {
 	ASSERT_NO_THROW(Data o = toData(testM));
