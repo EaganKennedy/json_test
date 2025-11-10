@@ -13,7 +13,7 @@ namespace json {
 	}
 
 	bool Boolean::isBoolean()  const {
-		return data;
+		return true;
 	}
 	bool& Boolean::getBoolean() {
 		return data;
