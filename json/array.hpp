@@ -1,4 +1,4 @@
-#include "iData.hpp"
+#include "idata.hpp"
 #include <vector>
 
 using std::vector;

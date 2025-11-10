@@ -1,6 +1,6 @@
 ﻿add_library(json STATIC  
 "json.hpp" 
-"iData.cpp" 
+"idata.cpp" 
 "null.cpp" 
 "boolean.cpp"
 "number.cpp" 
