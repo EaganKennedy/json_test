@@ -4,7 +4,7 @@
 namespace json {
 	class Boolean : public IData {
 	public:
-		Boolean(bool b = 0);
+		Boolean(bool b = false);
 
 		void print(std::ostream&) const override;
 		Data clone() const override;
