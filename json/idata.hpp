@@ -85,4 +85,5 @@ namespace json {
 	}
 
 	std::ostream& operator<<(std::ostream& out, Data const& rhs);
+	std::ostream& operator<<(std::ostream& out, const IData& rhs);
 }
