@@ -13,19 +13,9 @@ namespace json {
 	using DataVector = std::vector<Data>;
 	using DataMap = std::map<std::string, Data>;
 
-	class TypeError : public std::exception {
+	class TypeError : public std::runtime_error {
 	public:
-		using std::exception::exception;
-
-		TypeError(std::string m) : message(m) {
-		}
-
-		const char* what() const noexcept override {
-			return message.c_str();
-		}
-
-	private:
-		std::string message;
+		using std::runtime_error::runtime_error;
 	};
 
 	class IData {
