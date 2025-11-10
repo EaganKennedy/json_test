@@ -57,4 +57,8 @@ namespace json {
 		rhs->print(out);
 		return out;
 	}
+	std::ostream& operator<<(std::ostream& out, const IData& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }
