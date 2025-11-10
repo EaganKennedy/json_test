@@ -41,7 +41,7 @@ TEST(Identifiers, Null) {
 }
 TEST(Getters, Null) {
 	Data v = toData();
-	std::shared_ptr temp = null;
+	ASSERT_TRUE(v->isNull());
 }
 TEST(Print, Null) {
 	Data v = toData();

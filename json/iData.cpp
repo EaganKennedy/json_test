@@ -57,6 +57,7 @@ namespace json {
 		rhs->print(out);
 		return out;
 	}
+	//Why is this needed, the tests are looking for this type of print overload and that doesn't make sense
 	std::ostream& operator<<(std::ostream& out, const IData& rhs) {
 		rhs.print(out);
 		return out;

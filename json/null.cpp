@@ -6,16 +6,16 @@ namespace json {
 		out << "null";
 	}
 	Data Null::clone() const {
-		return null;
+		return std::make_shared<Null>();
 	}
 
 	bool Null::isNull() const {
 		return true;
 	}
 
-	std::shared_ptr<IData> null = std::make_shared<Null>();
+	//std::shared_ptr<IData> null = std::make_shared<Null>();
 	Data toData(){
-		return null;
+		return std::make_shared<Null>();
 	}
 
 	std::ostream& operator<<(std::ostream& out, const Null& rhs) {
