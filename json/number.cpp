@@ -15,7 +15,10 @@ namespace json {
 	bool Number::isNumber() const {
 		return true;
 	}
-	double& Number::getNumber(){
+	double& Number::getNumber() {
+		return data;
+	}
+	const double& Number::getNumber() const {
 		return data;
 	}
 

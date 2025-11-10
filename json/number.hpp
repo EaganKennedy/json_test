@@ -10,7 +10,8 @@ namespace json {
 		Data clone() const override;
 
 		bool isNumber() const override;
-		double& getNumber()override;
+		double& getNumber() override;
+		const double& getNumber() const override;
 
 	protected:
 		double data;

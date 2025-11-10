@@ -10,7 +10,8 @@ namespace json {
 		Data clone() const override;
 
 		bool isBoolean() const override;
-		bool& getBoolean()override;
+		bool& getBoolean() override;
+		const bool& getBoolean() const override;
 
 	protected:
 		bool data;

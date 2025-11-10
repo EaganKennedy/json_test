@@ -10,7 +10,8 @@ namespace json {
 		Data clone() const override;
 
 		bool isString() const override;
-		std::string& getString()override;
+		std::string& getString() override;
+		const std::string& getString() const override;
 	protected:
 		std::string data;
 	};

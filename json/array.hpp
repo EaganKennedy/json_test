@@ -13,6 +13,7 @@ namespace json {
 
 		bool isArray() const override;
 		DataVector& getArray() override;
+		const DataVector& getArray() const override;
 
 	protected:
 		DataVector data;

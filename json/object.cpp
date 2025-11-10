@@ -36,6 +36,9 @@ namespace json {
 	DataMap& Object::getObject() {
 		return data;
 	}
+	const DataMap& Object::getObject() const {
+		return data;
+	}
 
 	Data toData(DataMap dm) {
 		DataMap newDM;

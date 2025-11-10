@@ -18,7 +18,10 @@ namespace json {
 	bool String::isString() const {
 		return true;
 	}
-	string& String::getString(){
+	string& String::getString() {
+		return data;
+	}
+	const string& String::getString() const {
 		return data;
 	}
 

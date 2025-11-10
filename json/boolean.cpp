@@ -15,7 +15,10 @@ namespace json {
 	bool Boolean::isBoolean()  const {
 		return data;
 	}
-	bool& Boolean::getBoolean(){
+	bool& Boolean::getBoolean() {
+		return data;
+	}
+	const bool& Boolean::getBoolean() const {
 		return data;
 	}
 

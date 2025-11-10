@@ -10,6 +10,7 @@ namespace json{
 
 		bool isObject() const override;
 		DataMap& getObject() override;
+		const DataMap& getObject() const override;
 
 	protected:
 		DataMap data;

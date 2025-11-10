@@ -45,10 +45,15 @@ namespace json {
 		virtual bool isObject() const;
 
 		virtual bool& getBoolean();
+		virtual const bool& getBoolean() const;
 		virtual double& getNumber();
+		virtual const double& getNumber() const;
 		virtual std::string& getString();
+		virtual const std::string& getString()const;
 		virtual DataVector& getArray();
+		virtual const DataVector& getArray()const;
 		virtual DataMap& getObject();
+		virtual const DataMap& getObject()const;
 	};
 
 	template<typename T>

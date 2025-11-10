@@ -28,7 +28,10 @@ namespace json {
 	bool Array::isArray() const{
 		return true;
 	}
-	DataVector& Array::getArray(){
+	DataVector& Array::getArray() {
+		return data;
+	}
+	const DataVector& Array::getArray() const {
 		return data;
 	}
 
