@@ -49,4 +49,9 @@ namespace json {
 
 		return std::make_shared<Object>(newDM);
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Object& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }

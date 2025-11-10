@@ -29,4 +29,6 @@ namespace json {
 		}
 		return std::make_shared<Array>(temp);
 	}
+
+	std::ostream& operator<<(std::ostream& out, Array const& rhs);
 }

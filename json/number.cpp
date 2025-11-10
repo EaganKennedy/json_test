@@ -28,4 +28,9 @@ namespace json {
 	Data toData(double d) {
 		return std::make_shared<Number>(d);
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Number& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }

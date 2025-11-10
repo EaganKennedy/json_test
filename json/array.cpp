@@ -44,4 +44,9 @@ namespace json {
 
 		return std::make_shared<Array>(newDV);
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Array& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }

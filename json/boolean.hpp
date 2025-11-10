@@ -18,4 +18,6 @@ namespace json {
 	};
 
 	Data toData(bool input);
+
+	std::ostream& operator<<(std::ostream& out, Boolean const& rhs);
 }

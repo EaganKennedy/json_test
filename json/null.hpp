@@ -14,4 +14,6 @@ namespace json {
 
 	Data toData();
 	extern std::shared_ptr<IData> null;
+
+	std::ostream& operator<<(std::ostream& out, Null const& rhs);
 }

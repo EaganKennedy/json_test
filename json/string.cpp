@@ -32,4 +32,9 @@ namespace json {
 		string temp(charptr);
 		return std::make_shared<String>(temp);
 	}
+
+	std::ostream& operator<<(std::ostream& out, const String& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }

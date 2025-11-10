@@ -26,4 +26,9 @@ namespace json {
 	Data toData(bool b){
 		return std::make_shared<Boolean>(b);
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Boolean& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }

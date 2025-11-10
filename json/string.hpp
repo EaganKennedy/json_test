@@ -18,4 +18,6 @@ namespace json {
 
 	Data toData(std::string s);
 	Data toData(const char* charptr);
+
+	std::ostream& operator<<(std::ostream& out, String const& rhs);
 }

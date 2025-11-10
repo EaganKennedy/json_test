@@ -20,4 +20,6 @@ namespace json {
 	Data toData(int i);
 	Data toData(double d);
 
+	std::ostream& operator<<(std::ostream& out, Number const& rhs);
+
 }

@@ -17,4 +17,9 @@ namespace json {
 	Data toData(){
 		return null;
 	}
+
+	std::ostream& operator<<(std::ostream& out, const Null& rhs) {
+		rhs.print(out);
+		return out;
+	}
 }
