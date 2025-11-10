@@ -14,7 +14,18 @@ namespace json {
 	using DataMap = std::map<std::string, Data>;
 
 	class TypeError : public std::exception {
+	public:
 		using std::exception::exception;
+
+		TypeError(std::string m) : message(m) {
+		}
+
+		const char* what() const noexcept override {
+			return message.c_str();
+		}
+
+	private:
+		std::string message;
 	};
 
 	class IData {
