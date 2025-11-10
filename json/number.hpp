@@ -1,5 +1,5 @@
 #pragma once
-#include "idata.hpp"
+#include "iData.hpp"
 
 namespace json {
 	class Number : public IData {
