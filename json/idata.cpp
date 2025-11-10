@@ -1,4 +1,4 @@
-#include "idata.hpp"
+#include "iData.hpp"
 
 namespace json {
 	IData::~IData() = default;
